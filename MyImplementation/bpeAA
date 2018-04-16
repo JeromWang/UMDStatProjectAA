@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+if [ -f "vocabAA" ]; then
+	echo "vocab exists."
+else
+	./learn_bpe.py -s 2000 < tweets > vocabAA
+fi
+
+./apply_bpe.py --separator ' ' -c vocabAA < tweets > segmented_tweets
+
